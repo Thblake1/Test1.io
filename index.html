@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - A Pen by T Blake</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1, user-scalable=no" />
+  <title>ArcGis Maps SDK for JavaScript Tutorials: Display a map</title>
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.28/esri/themes/light/main.css">
+  <script src="https://js.arcgis.com/4.28/"></script>
+</head>
+
+<body>
+  <div id="viewDiv"></div>
+
+  <script>
+    require([
+      "esri/Map",
+      "esri/views/MapView",
+      "esri/widgets/Home",
+      "esri/widgets/Sketch"
+    ], function (Map, MapView, Home, Sketch) {
+
+      // Create a new Map object
+      const map = new Map({
+        basemap: "arcgis-topographic" // basemap styles service
+      });
+
+      // Create a MapView object
+      const view = new MapView({
+        map: map,
+        container: "viewDiv", // Specify a div element where the map will be displayed
+        zoom: 4, // Set the initial zoom level
+        center: [-98, 38] // Set the initial center coordinates [longitude, latitude]
+      });
+
+      // Create a Home widget
+      var homeWidget = new Home({
+        view: view // Specify the MapView instance
+      });
+
+      // Add the Home widget to the MapView
+      view.ui.add(homeWidget, "top-left");
+
+      // Create a Sketch widget
+      var sketchWidget = new Sketch({
+        view: view // Specify the MapView instance
+      });
+
+      // Add the Sketch widget to the MapView
+      view.ui.add(sketchWidget, "top-right");
+    });
+  </script>
+</body>
+
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
